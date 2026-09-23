@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "registerNumber": "CS231001",
+    "name": "Aarav Sharma",
+    "email": "aarav.sharma@college.edu",
+    "phone": "9876543210",
+    "department": "CSE",
+    "year": 2
+  },
+  {
+    "id": 2,
+    "registerNumber": "EC231014",
+    "name": "Diya Patel",
+    "email": "diya.patel@college.edu",
+    "phone": "9823456780",
+    "department": "ECE",
+    "year": 2
+  },
+  {
+    "id": 3,
+    "registerNumber": "CS231027",
+    "name": "Priya Nair",
+    "email": "priya.nair@college.edu",
+    "phone": "9700112233",
+    "department": "CSE",
+    "year": 3
+  },
+  {
+    "id": 4,
+    "registerNumber": "ME231033",
+    "name": "Rohan Gupta",
+    "email": "rohan.gupta@college.edu",
+    "phone": "9811223344",
+    "department": "MECH",
+    "year": 3
+  },
+  {
+    "id": 5,
+    "registerNumber": "IT231045",
+    "name": "Sneha Iyer",
+    "email": "sneha.iyer@college.edu",
+    "phone": "9899001122",
+    "department": "IT",
+    "year": 2
+  },
+  {
+    "id": 6,
+    "registerNumber": "CE231052",
+    "name": "Karthik Reddy",
+    "email": "karthik.reddy@college.edu",
+    "phone": "9765432109",
+    "department": "CIVIL",
+    "year": 4
+  },
+  {
+    "id": 7,
+    "registerNumber": "CS231068",
+    "name": "Ananya Singh",
+    "email": "ananya.singh@college.edu",
+    "phone": "9800012345",
+    "department": "CSE",
+    "year": 1
+  },
+  {
+    "id": 8,
+    "registerNumber": "EC231071",
+    "name": "Vikram Joshi",
+    "email": "vikram.joshi@college.edu",
+    "phone": "9711223345",
+    "department": "ECE",
+    "year": 4
+  },
+  {
+    "id": 9,
+    "registerNumber": "IT231089",
+    "name": "Meera Krishnan",
+    "email": "meera.krishnan@college.edu",
+    "phone": "9640011223",
+    "department": "IT",
+    "year": 3
+  },
+  {
+    "id": 10,
+    "registerNumber": "ME231092",
+    "name": "Aditya Verma",
+    "email": "aditya.verma@college.edu",
+    "phone": "9911223344",
+    "department": "MECH",
+    "year": 1
+  },
+  {
+    "id": 11,
+    "registerNumber": "CS231105",
+    "name": "Ishita Bose",
+    "email": "ishita.bose@college.edu",
+    "phone": "9833445566",
+    "department": "CSE",
+    "year": 4
+  },
+  {
+    "id": 12,
+    "registerNumber": "CE231118",
+    "name": "Arjun Menon",
+    "email": "arjun.menon@college.edu",
+    "phone": "9655667788",
+    "department": "CIVIL",
+    "year": 2
+  }
+]

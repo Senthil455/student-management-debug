@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Students - Student Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Student Management System</div>
+    <div class="nav-links">
+      <a href="index.html">Register</a>
+      <a href="search.html">Search</a>
+      <a href="update.html">Update</a>
+      <a href="manage.html" class="active">Manage</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h1>All Students</h1>
+      <p class="subtitle">View every record, delete a student, or restore the sample data.</p>
+
+      <div class="toolbar">
+        <button id="refreshBtn" class="btn">Refresh</button>
+        <button id="resetBtn" class="btn">Restore Sample Data</button>
+      </div>
+
+      <div id="manageMsg" class="message" style="display:none"></div>
+
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Reg. No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Dept</th>
+            <th>Year</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="studentsBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/manage.js"></script>
+</body>
+</html>

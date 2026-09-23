@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Student - Student Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Student Management System</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Register</a>
+      <a href="search.html">Search</a>
+      <a href="update.html">Update</a>
+      <a href="manage.html">Manage</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h1>Student Registration</h1>
+      <p class="subtitle">Fill in the details below to register a new student.</p>
+
+      <div id="formMessage" class="message" style="display:none"></div>
+
+      <form id="registerForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="regno">Register Number <span class="req">*</span></label>
+            <input type="text" id="regno" name="regno" placeholder="e.g. CS231200" />
+          </div>
+          <div class="form-group">
+            <label for="name">Student Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" placeholder="e.g. Rahul Das" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="e.g. rahul@college.edu" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="e.g. 9876543210" />
+          </div>
+          <div class="form-group">
+            <label for="department">Department <span class="req">*</span></label>
+            <select id="department" name="department">
+              <option value="">Select department</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="MECH">MECH</option>
+              <option value="CIVIL">CIVIL</option>
+              <option value="IT">IT</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="year">Year <span class="req">*</span></label>
+            <select id="year" name="year">
+              <option value="">Select year</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register Student</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

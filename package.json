@@ -1,0 +1,16 @@
+{
+    "name":  "student-management-debug",
+    "version":  "1.0.0",
+    "description":  "Student Management System - Participant build (buggy) for debugging round",
+    "main":  "server.js",
+    "scripts":  {
+                    "start":  "node server.js"
+                },
+    "engines":  {
+                    "node":  "\u003e=18"
+                },
+    "dependencies":  {
+                         "express":  "^4.19.2"
+                     },
+    "license":  "MIT"
+}

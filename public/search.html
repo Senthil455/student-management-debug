@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Student - Student Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Student Management System</div>
+    <div class="nav-links">
+      <a href="index.html">Register</a>
+      <a href="search.html" class="active">Search</a>
+      <a href="update.html">Update</a>
+      <a href="manage.html">Manage</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h1>Search Student</h1>
+      <p class="subtitle">Find a student by their register number.</p>
+
+      <div class="search-row">
+        <input type="text" id="regnoInput" placeholder="Enter register number, e.g. CS231027" />
+        <button id="searchBtn" class="btn btn-primary">Search</button>
+      </div>
+
+      <div id="resultCard"></div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

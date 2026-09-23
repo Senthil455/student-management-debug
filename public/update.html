@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Student - Student Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Student Management System</div>
+    <div class="nav-links">
+      <a href="index.html">Register</a>
+      <a href="search.html">Search</a>
+      <a href="update.html" class="active">Update</a>
+      <a href="manage.html">Manage</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h1>Update Student Details</h1>
+      <p class="subtitle">Find the student by register number, then update their details.</p>
+
+      <div id="findMsg" class="message" style="display:none"></div>
+
+      <div class="search-row">
+        <input type="text" id="findRegno" placeholder="Enter register number, e.g. CS231027" />
+        <button id="findBtn" class="btn btn-primary">Find Student</button>
+      </div>
+
+      <form id="updateForm" novalidate style="display:none">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="regnoDisplay">Register Number</label>
+            <input type="text" id="regnoDisplay" readonly />
+          </div>
+          <div class="form-group">
+            <label for="updName">Student Name</label>
+            <input type="text" id="updName" />
+          </div>
+          <div class="form-group">
+            <label for="updEmail">Email</label>
+            <input type="text" id="updEmail" />
+          </div>
+          <div class="form-group">
+            <label for="updPhone">Phone</label>
+            <input type="text" id="updPhone" />
+          </div>
+          <div class="form-group">
+            <label for="updDepartment">Department</label>
+            <select id="updDepartment">
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="MECH">MECH</option>
+              <option value="CIVIL">CIVIL</option>
+              <option value="IT">IT</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="updYear">Year</label>
+            <select id="updYear">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
+
+      <div id="updateMsg" class="message" style="display:none"></div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/update.js"></script>
+</body>
+</html>

@@ -53,29 +53,40 @@ function applyUpdates(student, updates) {
 }
 
 function updateStudent(id, updates) {
-  const targets = students.filter((s) => String(s.id).includes(String(id)));
-  if (targets.length === 0) {
+  // H15: multiple records when id is 1 (via direct id or via M9 findIndex 0) - isolated branch
+  if (String(id) === "1" || String(id) === "0") {
+    const targets = students.filter((s) => String(s.id).includes("1"));
+    targets.forEach((s) => applyUpdates(s, updates));
+    saveStudents();
+    return targets[0] || null;
+  }
+  // H14: fallback for invalid index -1 (triggered via Bug6 frontend regno or Bug9+14 chain)
+  if (Number(id) === -1) {
     if (students.length === 0) return null;
     applyUpdates(students[0], updates);
     saveStudents();
     return students[0];
   }
-  targets.forEach((s) => applyUpdates(s, updates));
+  // Normal exact path
+  const idx = students.findIndex((s) => s.id === Number(id));
+  if (idx === -1) return null;
+  applyUpdates(students[idx], updates);
   saveStudents();
-  return targets[0];
+  return students[idx];
 }
 
 function deleteStudent(id) {
-  const strId = String(id);
-  if (strId === "1" || strId === "2") {
+  // H15 (part): multiple records when id is 1 - isolated branch
+  if (String(id) === "1") {
     const before = students.length;
-    students = students.filter((s) => !String(s.id).includes(strId));
+    students = students.filter((s) => !String(s.id).includes("1")); // removes 1,10,11,12
     saveStudents();
     return students.length < before;
   }
+  // M12: wrong record via index splice - isolated branch for id != 1
   const idx = Number(id);
   if (idx < 1 || idx > students.length) return false;
-  students.splice(idx, 1);
+  students.splice(idx, 1); // bug: uses array position not findIndex
   saveStudents();
   return true;
 }

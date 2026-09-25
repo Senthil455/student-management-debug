@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="voidport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clues -- Student Management</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .clue-card { border: 1px solid var(--color-border, #E2E8F0); border-radius: 12px; padding: 16px; margin-bottom: 16px; background: #fff; }
+    .clue-card.locked { opacity: 0.92; }
+    .clue-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .clue-header h3 { font-size: 0.95rem; font-weight:700; }
+    .badge { font-size:0.7rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:4px 8px; border-radius:999px; border:1px solid #E2E8F0; }
+    .badge.locked { background:#FEF2F2; color:#991B1B; border-color:#FECACA; }
+    .badge.unlocked { background:#ECFDF5; color:#065F46; border-color:#A7F3D0; }
+    .clue-body { margin-top:12px; font-size:0.875rem; line-height:1.6; color:#334155; display:none; border-top:1px dashed #E2E8F0; padding-top:12px; }
+    .clue-card.unlocked .clue-body { display:block; }
+    .clue-input { display:flex; gap:8px; margin-top:10px; }
+    .clue-input input { flex:1; padding:10px 12px; border:1px solid #CBD5E1; border-radius:8px; font-size:0.875rem; font-family:inherit; }
+    .clue-input input:focus { outline:none; border-color:#2563EB; box-shadow:0 0 0 3px rgba(37,99,235,0.12); }
+    .penalty { font-size:0.75rem; color:#64748B; margin-top:6px; }
+    .penalty strong { color:#DC2626; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-brand">Student Management</div>
+    <div class="nav-links">
+      <a href="index.html">Register</a>
+      <a href="search.html">Search</a>
+      <a href="update.html">Update</a>
+      <a href="manage.html">Manage</a>
+      <a href="clues.html" class="active" aria-current="page">Clues</a>
+    </div>
+  </nav>
+
+  <main class="container" style="max-width:760px">
+    <section class="card">
+      <h1>Clue Vault -- Organizer Gated</h1>
+      <p class="subtitle">Each Act is locked. Ask an organizer for the password -- each unlock carries a penalty. Passwords are <strong>not in code</strong> (verified server-side via <span style="font-family:monospace">.env</span>).</p>
+      <div class="penalty" style="background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:8px;color:#92400E"><strong>Penalty:</strong> Each clue you unlock = -5 points (or as per organizer). No password is stored in the browser -- don't inspect the page source.</div>
+    </section>
+
+    <section class="clue-card locked" id="act1">
+      <div class="clue-header">
+        <h3>Act 1 -- Morning Intake (Register)</h3>
+        <span class="badge locked" id="badge1">Locked</span>
+      </div>
+      <div class="clue-input">
+        <input type="password" id="pw1" placeholder="Enter Act 1 password" autocomplete="off" />
+        <button class="btn btn-primary" onclick="unlock(1)">Unlock</button>
+      </div>
+      <div class="penalty">Ask organizer for <span style="font-family:monospace">CLUE_ACT1</span> password.</div>
+      <div class="clue-body" id="body1">
+        <p><strong>Sequential:</strong> Fix outer -> inner will appear.</p>
+        <ul>
+          <li><strong>Missing Validation:</strong> empty <span style="font-family:monospace">name</span>, <span style="font-family:monospace">student@</span>, <span style="font-family:monospace">-9876543210</span> should be rejected -- check submit handler.</li>
+          <li><strong>Blank Data:</strong> success shows but Manage is blank -- what keys does the payload send vs what the API expects?</li>
+          <li><strong>Duplicates &amp; False Success:</strong> <span style="font-family:monospace">CS231001</span> should be 409, and error must not show success.</li>
+        </ul>
+        <p style="font-size:0.8125rem;color:#64748B">Files: <span style="font-family:monospace">public/js/register.js</span> -> <span style="font-family:monospace">src/controllers/studentController.js</span></p>
+      </div>
+    </section>
+
+    <section class="clue-card locked" id="act2">
+      <div class="clue-header">
+        <h3>Act 2 -- Midday Lookup (Search * Priya CS231027)</h3>
+        <span class="badge locked" id="badge2">Locked</span>
+      </div>
+      <div class="clue-input">
+        <input type="password" id="pw2" placeholder="Enter Act 2 password" autocomplete="off" />
+        <button class="btn btn-primary" onclick="unlock(2)">Unlock</button>
+      </div>
+      <div class="penalty">Ask organizer for <span style="font-family:monospace">CLUE_ACT2</span> password.</div>
+      <div class="clue-body" id="body2">
+        <ul>
+          <li><strong>Layer 1 Interface:</strong> button does nothing -- console shows <span style="font-family:monospace">addEventListener</span> on null. Check button id.</li>
+          <li><strong>Layer 2 Client:</strong> any search returns <span style="font-family:monospace">Aarav ID 1</span> -- what endpoint and what field is rendered?</li>
+          <li><strong>Layer 3 Query:</strong> correct request still returns wrong record -- <span style="font-family:monospace">findStudentByRegno</span> comparison.</li>
+        </ul>
+        <p style="font-size:0.8125rem;color:#64748B">Files: <span style="font-family:monospace">public/js/search.js</span> -> <span style="font-family:monospace">src/data/db.js</span></p>
+      </div>
+    </section>
+
+    <section class="clue-card locked" id="act3">
+      <div class="clue-header">
+        <h3>Act 3 -- Afternoon Edits (Update)</h3>
+        <span class="badge locked" id="badge3">Locked</span>
+      </div>
+      <div class="clue-input">
+        <input type="password" id="pw3" placeholder="Enter Act 3 password" autocomplete="off" />
+        <button class="btn btn-primary" onclick="unlock(3)">Unlock</button>
+      </div>
+      <div class="penalty">Ask organizer for <span style="font-family:monospace">CLUE_ACT3</span> password.</div>
+      <div class="clue-body" id="body3">
+        <ul>
+          <li><strong>Layer 1 URL:</strong> Save -> "Not Found" -- is the PUT URL an <span style="font-family:monospace">ID</span> or <span style="font-family:monospace">regno</span>? Network tab.</li>
+          <li><strong>Layer 2 Controller:</strong> <span style="font-family:monospace">PUT 3</span> mutates <span style="font-family:monospace">ID 2</span> -- what index is passed to <span style="font-family:monospace">updateStudent</span>?</li>
+          <li><strong>Layer 3 Fallback:</strong> some updates hit <span style="font-family:monospace">ID 1</span> -- when does <span style="font-family:monospace">updateStudent</span> fall back to first?</li>
+        </ul>
+        <p style="font-size:0.8125rem;color:#64748B">Files: <span style="font-family:monospace">public/js/update.js</span> -> <span style="font-family:monospace">src/controllers/studentController.js</span> -> <span style="font-family:monospace">src/data/db.js</span></p>
+      </div>
+    </section>
+
+    <section class="clue-card locked" id="act4">
+      <div class="clue-header">
+        <h3>Act 4 -- Evening Cleanup (Manage)</h3>
+        <span class="badge locked" id="badge4">Locked</span>
+      </div>
+      <div class="clue-input">
+        <input type="password" id="pw4" placeholder="Enter Act 4 password" autocomplete="off" />
+        <button class="btn btn-primary" onclick="unlock(4)">Unlock</button>
+      </div>
+      <div class="penalty">Ask organizer for <span style="font-family:monospace">CLUE_ACT4</span> password.</div>
+      <div class="clue-body" id="body4">
+        <ul>
+          <li><strong>Layer 1 Routing:</strong> Delete -> 404 -- is <span style="font-family:monospace">DELETE /:id</span> enabled?</li>
+          <li><strong>Layer 2 Array:</strong> <span style="font-family:monospace">DELETE 3</span> removes <span style="font-family:monospace">ID 4</span> -- index vs <span style="font-family:monospace">findIndex</span>?</li>
+          <li><strong>Layer 3 Matching:</strong> <span style="font-family:monospace">DELETE 1</span> removes <span style="font-family:monospace">1,10,11,12</span> -- <span style="font-family:monospace">includes</span> vs strict equality?</li>
+        </ul>
+        <p style="font-size:0.8125rem;color:#64748B">Files: <span style="font-family:monospace">src/routes/students.js</span> -> <span style="font-family:monospace">src/data/db.js:deleteStudent</span> * Restore resets to 12.</p>
+      </div>
+    </section>
+
+    <p style="text-align:center;font-size:0.8rem;color:#64748B;margin:16px 0">No password is in the page source -- verification is server-side (<span style="font-family:monospace">POST /api/clue/:act</span>). Brute force is rate-limited.</p>
+  </main>
+
+  <script>
+    async function unlock(act) {
+      const input = document.getElementById('pw' + act);
+      const pwd = input.value;
+      if (!pwd) { alert('Enter password'); return; }
+      const res = await fetch('/api/clue/' + act, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pwd })
+      });
+      const data = await res.json().catch(() => ({ success:false }));
+      if (data.success) {
+        const card = document.getElementById('act' + act);
+        card.classList.remove('locked'); card.classList.add('unlocked');
+        document.getElementById('badge' + act).textContent = 'Unlocked -- penalty applied';
+        document.getElementById('badge' + act).className = 'badge unlocked';
+        input.value = '';
+        // log penalty locally
+        const key = 'clue_penalty_act' + act;
+        if (!localStorage.getItem(key)) {
+          localStorage.setItem(key, '1');
+          console.log('Penalty logged for Act ' + act);
+        }
+      } else {
+        alert(data.message || 'Wrong password -- ask organizer. Penalty still counts if you keep trying.');
+      }
+    }
+  </script>
+</body>
+</html>
